@@ -8,5 +8,15 @@ namespace ModulConfig.Models
 {
     class Company
     {
+        public string Name { get; set; }
+        public string Email { get; set; }
+        public string Contact { get; set; }
+
+        public Company(string name, string email, string contact)
+        {
+            Name = name;
+            Email = email;
+            Contact = contact;
+        }
     }
 }

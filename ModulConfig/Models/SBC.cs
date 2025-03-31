@@ -8,5 +8,14 @@ namespace ModulConfig.Models
 {
     class SBC
     {
+        public string Model { get; set; }
+        public string SerialNumber { get; set; }
+
+
+        public SBC(string model, string serialNumber)
+        {
+            Model = model;
+            SerialNumber = serialNumber;
+        }
     }
 }

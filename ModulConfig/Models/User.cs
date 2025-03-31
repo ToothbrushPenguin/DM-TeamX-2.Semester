@@ -8,5 +8,14 @@ namespace ModulConfig.Models
 {
     class User
     {
+        public string Name { get; set; }
+        
+        public string Initials { get; set; }
+
+        public User(string name, string initials)
+        {
+            Name = name;
+            Initials = initials;
+        }
     }
 }
