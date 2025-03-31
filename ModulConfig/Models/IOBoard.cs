@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ModulConfig.Models
 {
-    class IOBoard
+    public class IOBoard
     {
         public string ApplicationVersion { get; set; }
         public string KernelVersion { get; set; }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ModulConfig.Models
 {
-    class Company
+    public class Company
     {
         public string Name { get; set; }
         public string Email { get; set; }

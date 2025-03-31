@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ModulConfig.Models
 {
-    class User
+    public class User
     {
         public string Name { get; set; }
         

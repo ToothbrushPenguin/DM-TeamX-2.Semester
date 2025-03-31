@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ModulConfig.Models
 {
-    class SBC
+    public class SBC
     {
         public string Model { get; set; }
         public string SerialNumber { get; set; }
