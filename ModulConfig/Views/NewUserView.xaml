@@ -32,7 +32,7 @@
             HorizontalAlignment="Center"
             VerticalAlignment="Bottom"
             Content="New user"
-            FontFamily="{Binding }"
+            
             FontSize="23                "
             FontWeight="SemiBold" />
         <!--  Initials textbox  -->
@@ -41,7 +41,7 @@
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             Content="Initials:"
-            FontFamily="{Binding CustomFont}"
+            
             FontSize="12"
             FontWeight="SemiBold" />
         <TextBox
@@ -58,7 +58,7 @@
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             Content="Name:"
-            FontFamily="{Binding CustomFont}"
+            
             FontSize="12"
             FontWeight="SemiBold" />
         <TextBox
