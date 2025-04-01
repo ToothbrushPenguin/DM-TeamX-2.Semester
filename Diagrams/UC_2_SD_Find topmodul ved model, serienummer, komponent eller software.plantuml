@@ -3,8 +3,8 @@ skinparam style strictuml
 skinparam SequenceMessageAlignment center
 
 participant "SearchCommand" as SC
+Participant "GetModuleCommand" as GMC
 participant ":MainViewModel" as MVM
-
 
 
 [o-> SC: Execute(parameter)
@@ -20,5 +20,10 @@ participant ":MainViewModel" as MVM
          MVM -> MVM: result: List<Modules> = moduleVMs.Where(m.IOBoard.BoardModel => m.IOBoard.IOBoardModel.Contains(searchText).ToList())
       end
    return result: List<Modules>
+return
+
+[o-> GMC: Execute(parameter)
+GMC -> MVM++: GetSelectedModule()
+MVM -> MVM : Navigate(ModuleWindow)
 return
 @enduml
