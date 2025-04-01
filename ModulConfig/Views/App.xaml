@@ -4,6 +4,6 @@
              xmlns:local="clr-namespace:ModulConfig"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <FontFamily x:Key="CustomFont">C:\Users\Simon\source\VsProjects\DM-TeamX-2.Semester\ModulConfig\Fonts\TitilliumWeb-Regular.ttf</FontFamily>
     </Application.Resources>
 </Application>
