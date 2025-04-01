@@ -1,5 +1,5 @@
 ﻿<UserControl
-    x:Class="ModulConfig.Views.LoginView"
+    x:Class="ModulConfig.Views.NewUserView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -16,46 +16,64 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
             <RowDefinition Height="20" />
         </Grid.RowDefinitions>
+        <Button
+            x:Name="BackBtn"
+            Grid.Row="1"
+            Width="55"
+            Height="25"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Content="Back"
+            />
         <Label
             Grid.Row="1"
             HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            Content="Login"
-            FontFamily="{Binding CustomFont}"
-            FontSize="23"
+            VerticalAlignment="Bottom"
+            Content="New user"
+            FontFamily="{Binding }"
+            FontSize="23                "
             FontWeight="SemiBold" />
-        <Image Grid.Row="2" Source="/Icons/PersonIcon.png" />
-        <!--  Input initials  -->
+        <!--  Initials textbox  -->
         <Label
-            Grid.Row="3"
+            Grid.Row="2"
             HorizontalAlignment="Center"
-            VerticalAlignment="Top"
-            Content="Input initials:"
+            VerticalAlignment="Center"
+            Content="Initials:"
             FontFamily="{Binding CustomFont}"
             FontSize="12"
             FontWeight="SemiBold" />
         <TextBox
-            Grid.Row="3"
-            Width="150"
-            Height="35"
+            x:Name="InitialsTxtBox"
+            Grid.Row="2"
+            Width="65"
+            Height="25"
+            Margin="0,0,0,15"
+            HorizontalAlignment="Center"
             VerticalAlignment="Bottom" />
-        <!--  Login button  -->
+        <!--  Name textbox  -->
+        <Label
+            Grid.Row="3"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Content="Name:"
+            FontFamily="{Binding CustomFont}"
+            FontSize="12"
+            FontWeight="SemiBold" />
+        <TextBox
+            x:Name="NameTxtBox"
+            Grid.Row="3"
+            Width="65"
+            Height="25"
+            Margin="0,0,0,15"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Bottom" />
+        <!--  Create user button  -->
         <Button
-            x:Name="LoginBtn"
             Grid.Row="4"
-            Width="55"
+            Width="85"
             Height="25"
-            Content="Login" />
-        <!--  Create new user  -->
-        <Button
-            x:Name="NewUserBtn"
-            Grid.Row="5"
-            Width="110"
-            Height="25"
-            Content="Create new user" />
+            Content="Create user" />
     </Grid>
 </UserControl>
