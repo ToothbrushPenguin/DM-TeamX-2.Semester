@@ -1,0 +1,72 @@
+@startuml
+skinparam style strictuml
+skinparam sequenceMessageAlign center
+title UC 1: Lav Topmodul ved at importere JSON Konfigurationsfiler
+
+participant ":CreateModuleCommand" as CMC
+participant ":MainViewModel" as MVM
+participant ":OpenFileDialog" as OFD
+participant ":ModuleRepository" as MR
+participant ":SBCRepository" as SR
+participant ":SBCViewModel" as SV
+participant ":IOBoardRepository" as IR
+participant ":IOBoardViewModel" as IV
+participant ":Module" as M
+participant ":SBC" as S
+participant ":IOBoard" as I
+participant ":ModuleViewModel" as MV
+
+participant ":MessageBox" as MB
+
+
+[o-> CMC: Execute(parameter)
+activate CMC
+    CMC -> MVM ++: CreateModule()
+        MVM -> OFD **: Create new OpenFileDialog()
+        MVM -> OFD ++: Show()
+        return moduleJSON.JSON
+        MVM -> MR ++: Create(company : Company, User : User, moduleJSON : string): Module
+            create M
+            MR -> M ++: new Module(company : Company, User : User, moduleJSON : string)
+                M -> M ++: FormatJSON(moduleJSON : string)
+                create S
+                M -> S ++: new SBC(model : string, serialNumber : string)
+                return 
+                create I
+                M -> I ++: new IOBoard(applicationVersion : string, kernelVersion : string, boardModel : string)
+                return 
+                return 
+            return 
+        return Module
+       
+        create MV
+        MVM -> MV ++: new ModuleViewModel(Module)
+        return
+        MVM -> MVM: ModuleVMs.Add(module_VM)
+        MVM -> MVM: SelectedModule_VM = module_VM
+
+
+        MVM -> SR++: Create(SBC : SBC)
+        return SBC
+
+        create SV
+        MVM -> SV ++: new ModuleViewModel(SBC : SBC)
+        return
+        MVM -> MVM: ModuleVMs.Add(module_VM)
+
+        MVM -> IR++: Create(IOBoard : IOBoard)
+        return IOBoard
+        create IV
+        MVM -> IV ++: new ModuleViewModel(IOBoard : IOBoard)
+        return
+        MVM -> MVM: ModuleVMs.Add(module_VM)
+        
+        MVM -> MB ++: Show()
+        return 
+        
+    return
+   
+    
+
+
+@enduml

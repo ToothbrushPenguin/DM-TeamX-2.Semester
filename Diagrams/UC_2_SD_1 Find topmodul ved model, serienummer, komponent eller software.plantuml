@@ -1,0 +1,24 @@
+@startuml
+skinparam style strictuml
+skinparam SequenceMessageAlignment center
+
+participant "SearchCommand" as SC
+participant ":MainViewModel" as MVM
+
+
+
+[o-> SC: Execute(parameter)
+   SC -> MVM++: GetAllModules()
+      MVM -> MVM++: SearchModules(type: Enum, searchText: string)
+      alt type == SerialNumber
+         MVM -> MVM: result: List<Modules> = moduleVMs.Where(m.SerialNumber => m.SerialNumber.Contains(searchText).ToList())
+      else type == SBCSerialnumber
+         MVM-> MVM: result: List<Modules> = moduleVMs.Where(m.SBC.SerialNumber => m.SBC.SerialNumber.Contains(searchText).ToList())
+      else type == SBCModel
+         MVM -> MVM: result: List<Modules> = moduleVMs.Where(m.SBC.Model => m.SBC.Model.Contains(searchText).ToList())
+      else type == IOBoard
+         MVM -> MVM: result: List<Modules> = moduleVMs.Where(m.IOBoard.BoardModel => m.IOBoard.IOBoardModel.Contains(searchText).ToList())
+      end
+   return result: List<Modules>
+return
+@enduml
