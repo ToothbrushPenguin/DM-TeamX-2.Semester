@@ -1,0 +1,33 @@
+@startuml
+skinparam style strictuml
+skinparam sequenceMessageAlign center
+title UC5: Opret ny bruger med initialer og navn
+
+
+participant ": CreateUserCommand" as CUC
+participant ": mainViewModel" as mvm
+
+participant ": userRepository" as urepo
+participant ": User" as U
+participant ": userViewModel" as uvm
+
+participant ":MessageBox" as MB
+
+[o-> CUC: Execute(parameter)
+    CUC -> mvm ++: CreateNewUser()
+        mvm -> urepo ++: Create(initials, name)
+            create U
+            urepo --> U ++: new User(initials, name)
+            return 
+        return CreatedUser
+        
+        create uvm
+        mvm -> uvm ++: user_VM = new UserViewModel(CreatedUser : User)
+        return
+        mvm -> mvm: UserVMs.Add(user_VM)
+                
+        mvm -> MB ++: Show()
+        return
+return
+
+@enduml
