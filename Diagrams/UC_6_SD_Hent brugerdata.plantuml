@@ -1,0 +1,17 @@
+@startuml
+skinparam style strictuml
+skinparam SequenceMessageAlignment center
+title UC 6: Hent brugerdata(“login”)
+
+Participant "GetUserCommand" as GUC
+participant ":MainViewModel" as MVM
+participant "UserRepository" as UR
+
+[o-> GUC++: Execute(parameter)
+    GUC -> MVM++: GetUser()
+        MVM ->> UR ++: Read(Initials)
+        return User : User
+        MVM -> MVM : Navigate(ModuleListWindow)
+    return
+    
+@enduml
