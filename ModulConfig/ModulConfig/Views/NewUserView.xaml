@@ -18,8 +18,8 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="20" />
         </Grid.RowDefinitions>
-        <Button
-            x:Name="BackBtn"
+        <Button Style="{DynamicResource ButtonStyle1}"
+                x:Name="BackBtn"
             Grid.Row="1"
             Width="55"
             Height="25"
@@ -74,6 +74,7 @@
             Grid.Row="4"
             Width="85"
             Height="25"
-            Content="Create user" />
+            Content="Create user"
+                Style="{DynamicResource ButtonStyle1}" />
     </Grid>
 </UserControl>

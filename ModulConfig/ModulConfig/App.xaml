@@ -18,9 +18,9 @@
             </Setter>
         </Style>
         <SolidColorBrush x:Key="Button.Static.Background1"
-                         Color="Pink" />
-        <SolidColorBrush x:Key="Button.Static.Border1"
                          Color="White" />
+        <SolidColorBrush x:Key="Button.Static.Border1"
+                         Color="Black" />
         <SolidColorBrush x:Key="Button.MouseOver.Background1"
                          Color="White" />
         <SolidColorBrush x:Key="Button.MouseOver.Border1"
