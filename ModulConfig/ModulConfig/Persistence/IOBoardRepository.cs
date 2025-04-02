@@ -7,8 +7,14 @@ using ModulConfig.Models;
 
 namespace ModulConfig.Persistence
 {
-    public class IOBoardRepository : IRepository<IOBoard>
+    public class IOBoardRepository : RepositoryBase, IRepository<IOBoard>
     {
+        public IOBoardRepository()
+        {
+            Implement();
+            ioBoards = new List<IOBoard>();
+        }
+
         private List<IOBoard> ioBoards;
         public IOBoard Create(params object[] parameters)
         {

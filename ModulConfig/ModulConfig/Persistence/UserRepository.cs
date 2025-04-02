@@ -7,8 +7,14 @@ using ModulConfig.Models;
 
 namespace ModulConfig.Persistence
 {
-    public class UserRepository : IRepository<User>
+    public class UserRepository : RepositoryBase, IRepository<User>
     {
+        public UserRepository()
+        {
+            Implement();
+            users = new List<User>();
+        }
+        private List<User> users;
         public User Create(params object[] parameters)
         {
             throw new NotImplementedException();

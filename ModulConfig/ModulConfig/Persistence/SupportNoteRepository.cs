@@ -7,8 +7,15 @@ using ModulConfig.Models;
 
 namespace ModulConfig.Persistence
 {
-    public class SupportNoteRepository : IRepository<SupportNote>
+    public class SupportNoteRepository : RepositoryBase, IRepository<SupportNote>
     {
+        public SupportNoteRepository()
+        {
+            Implement();
+            supportNotes = new List<SupportNote>();
+        }
+
+        private List<SupportNote> supportNotes;
         public SupportNote Create(params object[] parameters)
         {
             throw new NotImplementedException();

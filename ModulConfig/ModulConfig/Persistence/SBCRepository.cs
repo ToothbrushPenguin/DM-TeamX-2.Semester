@@ -7,8 +7,15 @@ using ModulConfig.Models;
 
 namespace ModulConfig.Persistence
 {
-    public class SBCRepository : IRepository<SBC>
+    public class SBCRepository : RepositoryBase, IRepository<SBC>
     {
+        public SBCRepository()
+        {
+            Implement();
+            sbcs = new List<SBC>();
+        }
+
+        private List<SBC> sbcs;
         public SBC Create(params object[] parameters)
         {
             throw new NotImplementedException();

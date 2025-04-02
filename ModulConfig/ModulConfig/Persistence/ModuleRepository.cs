@@ -7,8 +7,16 @@ using ModulConfig.Models;
 
 namespace ModulConfig.Persistence
 {
-    public class ModuleRepository : IRepository<Module>
+    public class ModuleRepository : RepositoryBase, IRepository<Module>
     {
+        public ModuleRepository()
+        {
+            Implement();
+            modules = new List<Module>();
+
+        }
+        private List<Module> modules;
+
         public Module Create(params object[] parameters)
         {
             throw new NotImplementedException();

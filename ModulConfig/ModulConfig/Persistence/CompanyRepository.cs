@@ -7,9 +7,15 @@ using ModulConfig.Models;
 
 namespace ModulConfig.Persistence
 {
-    public class CompanyRepository : IRepository<Company>
+    public class CompanyRepository : RepositoryBase, IRepository<Company>
     {
         private List<Company> companies;
+
+        public CompanyRepository()
+        {
+            Implement();
+            companies = new List<Company>();
+        }
 
         public Company Create(params object[] parameters)
         {
