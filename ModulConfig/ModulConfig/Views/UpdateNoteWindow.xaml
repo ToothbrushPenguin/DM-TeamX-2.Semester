@@ -5,10 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ModulConfig.Views"
         mc:Ignorable="d"
-        Title="NewNoteWindow" Height="600" Width="800">
+        Title="NewNoteWindow"
+        Height="600"
+        Width="800">
     <Window.Background>
-        <ImageBrush ImageSource="/Images/ROEQ-BackGround-upscale.jpg" 
-                    Stretch="UniformToFill"/>
+        <ImageBrush ImageSource="/Images/ROEQ-BackGround-upscale.jpg"
+                    Stretch="UniformToFill" />
     </Window.Background>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -22,12 +24,12 @@
             <RowDefinition Height="20" />
             <RowDefinition Height="150" />
             <RowDefinition Height="*" />
-            
+
             <RowDefinition Height="20" />
         </Grid.RowDefinitions>
-        
+
         <!-- Buttons-->
-        <Button x:Name="BackBtn" 
+        <Button x:Name="BackBtn"
                 Grid.Row="1"
                 Grid.Column="1"
                 Style="{DynamicResource ButtonStyle1}"
@@ -35,19 +37,19 @@
                 Width="55"
                 Content="Back"
                 HorizontalAlignment="Left"
-                VerticalAlignment="Top"/>
-        <Button x:Name="SaveNoteBtn"
+                VerticalAlignment="Top" />
+        <Button x:Name="UpdateNoteBtn"
                 Grid.Row="2"
                 Grid.Column="3"
                 Style="{DynamicResource ButtonStyle1}"
                 Height="25"
                 Width="90"
-                Content="Save note"
+                Content="Update note"
                 HorizontalAlignment="Right"
                 VerticalAlignment="Bottom" />
-        
+
         <!--Label-->
-        <Label Content="Create new note" 
+        <Label Content="Update note"
                Grid.Row="1"
                Grid.Column="2"
                HorizontalAlignment="Center"
@@ -55,16 +57,15 @@
                Foreground="AliceBlue"
                FontSize="23"
                FontWeight="SemiBold"
-               Height="55"
-               />
-        <Label Content="Also applies to: " 
+               Height="55" />
+        <Label Content="Also applies to: "
                Grid.Row="2"
                Grid.Column="1"
                Height="25"
                Width="95"
                Foreground="AliceBlue"
                VerticalAlignment="Bottom"
-               HorizontalAlignment="Left"/>
+               HorizontalAlignment="Left" />
 
         <!--ComboBox-->
         <ComboBox Grid.Row="1"
@@ -95,22 +96,20 @@
 
         <!--TextBox-->
         <TextBox Grid.Row="1"
-                 x:Name="NoteTitleTxtBox"
+                 x:Name="UpdateNoteTitleTxtBox"
                  Grid.Column="1"
                  Grid.ColumnSpan="3"
                  Height="35"
                  VerticalContentAlignment="Center"
                  VerticalAlignment="Bottom"
-                 Style="{DynamicResource NewNoteTxtBox}"
-                 />
-        <TextBox Style="{DynamicResource NewNoteTxtBox}" 
+                 Style="{DynamicResource NewNoteTxtBox}" />
+        <TextBox Style="{DynamicResource NewNoteTxtBox}"
                  Grid.Row="2"
-                 x:Name="NewNoteTxtBox"
+                 x:Name="UpdateNoteTxtBox"
                  Grid.RowSpan="2"
                  Grid.Column="1"
                  Grid.ColumnSpan="3"
-                 Margin="0,10,0,50"
-                  />
+                 Margin="0,10,0,50" />
         <!--CheckBox-->
     </Grid>
 </Window>
