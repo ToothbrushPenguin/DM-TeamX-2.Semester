@@ -28,6 +28,6 @@ participant ":MessageBox" as MB
                 
         mvm -> MB ++: Show()
         return
-return
+    return
 
 @enduml
