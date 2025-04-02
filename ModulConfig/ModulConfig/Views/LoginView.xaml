@@ -36,7 +36,6 @@
             HorizontalAlignment="Center"
             VerticalAlignment="Top"
             Content="Input initials:"
-            
             FontSize="12"
             FontWeight="SemiBold" />
         <TextBox
@@ -53,6 +52,7 @@
             Content="Login" />
         <!--  Create new user  -->
         <Button
+            Style="{DynamicResource ButtonStyle1}"
             x:Name="NewUserBtn"
             Grid.Row="5"
             Width="110"
