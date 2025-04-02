@@ -39,6 +39,7 @@ namespace ModulConfig.ViewModels
             SBCVMs = new ObservableCollection<SBCViewModel>();
             IOBoardVMs = new ObservableCollection<IOBoardViewModel>();
             ModuleVMs = new ObservableCollection<ModuleViewModel>();
+
         }
     }
 }

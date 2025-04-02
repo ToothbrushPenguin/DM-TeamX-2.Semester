@@ -9,30 +9,29 @@ namespace ModulConfig.Persistence
 {
     public class IOBoardRepository : RepositoryBase, IRepository<IOBoard>
     {
+        private List<IOBoard> ioBoards;
         public IOBoardRepository()
         {
             Implement();
             ioBoards = new List<IOBoard>();
         }
 
-        private List<IOBoard> ioBoards;
-        public IOBoard Create(params object[] parameters)
+        public IOBoard Create(IOBoard obj)
         {
             throw new NotImplementedException();
         }
-        public void Delete(params object[] parameters)
+
+        public void Delete(IOBoard obj)
         {
             throw new NotImplementedException();
         }
-        public IEnumerable<IOBoard> GetAll()
+
+        public IEnumerable<IOBoard> ReadAll()
         {
             throw new NotImplementedException();
         }
-        public IOBoard Read(params object[] parameters)
-        {
-            throw new NotImplementedException();
-        }
-        public IOBoard Update(params object[] parameters)
+
+        public IOBoard Update(IOBoard obj)
         {
             throw new NotImplementedException();
         }

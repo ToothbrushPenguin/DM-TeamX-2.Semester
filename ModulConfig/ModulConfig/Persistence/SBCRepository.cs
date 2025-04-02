@@ -9,34 +9,29 @@ namespace ModulConfig.Persistence
 {
     public class SBCRepository : RepositoryBase, IRepository<SBC>
     {
+        private List<SBC> sbcs;
         public SBCRepository()
         {
             Implement();
             sbcs = new List<SBC>();
         }
 
-        private List<SBC> sbcs;
-        public SBC Create(params object[] parameters)
+        public SBC Create(SBC obj)
         {
             throw new NotImplementedException();
         }
 
-        public void Delete(params object[] parameters)
+        public void Delete(SBC obj)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<SBC> GetAll()
+        public IEnumerable<SBC> ReadAll()
         {
             throw new NotImplementedException();
         }
 
-        public SBC Read(params object[] parameters)
-        {
-            throw new NotImplementedException();
-        }
-
-        public SBC Update(params object[] parameters)
+        public SBC Update(SBC obj)
         {
             throw new NotImplementedException();
         }

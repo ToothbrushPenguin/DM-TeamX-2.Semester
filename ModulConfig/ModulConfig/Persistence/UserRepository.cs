@@ -10,28 +10,18 @@ namespace ModulConfig.Persistence
 {
     public class UserRepository : RepositoryBase, IRepository<User>
     {
+        private List<User> users;
         public UserRepository()
         {
             Implement();
             users = new List<User>();
         }
-        private List<User> users;
+        
 
 
-        public User Create(params object[] parameters)
+        public User Create(User user)
         {
-            if (parameters.Length < 2)
-                throw new ArgumentException("Not enough parameters. Expected: name, initials");
-
-            string name = parameters[0] as string;
-            string initials = parameters[1] as string;
-
-            if (name == null || initials == null)
-                throw new ArgumentException("Invalid parameter types. Expected: string, string");
-
-            User user = new User(name, initials);
-
-
+            
             using (SqlConnection con = new SqlConnection(ConnectionString))
             {
                 con.Open();
@@ -48,22 +38,19 @@ namespace ModulConfig.Persistence
             return user;
         }
 
-        public void Delete(params object[] parameters)
+        public void Delete(User user)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<User> GetAll()
+        public IEnumerable<User> ReadAll()
         {
             throw new NotImplementedException();
         }
 
-        public User Read(params object[] parameters)
-        {
-            throw new NotImplementedException();
-        }
+      
 
-        public User Update(params object[] parameters)
+        public User Update(User user)
         {
             throw new NotImplementedException();
         }

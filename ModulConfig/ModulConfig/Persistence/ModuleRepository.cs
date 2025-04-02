@@ -9,35 +9,30 @@ namespace ModulConfig.Persistence
 {
     public class ModuleRepository : RepositoryBase, IRepository<Module>
     {
+        private List<Module> modules;
         public ModuleRepository()
         {
             Implement();
             modules = new List<Module>();
 
         }
-        private List<Module> modules;
 
-        public Module Create(params object[] parameters)
+        public Module Create(Module obj)
         {
             throw new NotImplementedException();
         }
 
-        public void Delete(params object[] parameters)
+        public void Delete(Module obj)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<Module> GetAll()
+        public IEnumerable<Module> ReadAll()
         {
             throw new NotImplementedException();
         }
 
-        public Module Read(params object[] parameters)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Module Update(params object[] parameters)
+        public Module Update(Module obj)
         {
             throw new NotImplementedException();
         }

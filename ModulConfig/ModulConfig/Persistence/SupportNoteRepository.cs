@@ -9,34 +9,29 @@ namespace ModulConfig.Persistence
 {
     public class SupportNoteRepository : RepositoryBase, IRepository<SupportNote>
     {
+        private List<SupportNote> supportNotes;
         public SupportNoteRepository()
         {
             Implement();
             supportNotes = new List<SupportNote>();
         }
 
-        private List<SupportNote> supportNotes;
-        public SupportNote Create(params object[] parameters)
+        public SupportNote Create(SupportNote obj)
         {
             throw new NotImplementedException();
         }
 
-        public void Delete(params object[] parameters)
+        public void Delete(SupportNote obj)
         {
             throw new NotImplementedException();
         }
 
-        public IEnumerable<SupportNote> GetAll()
+        public IEnumerable<SupportNote> ReadAll()
         {
             throw new NotImplementedException();
         }
 
-        public SupportNote Read(params object[] parameters)
-        {
-            throw new NotImplementedException();
-        }
-
-        public SupportNote Update(params object[] parameters)
+        public SupportNote Update(SupportNote obj)
         {
             throw new NotImplementedException();
         }
