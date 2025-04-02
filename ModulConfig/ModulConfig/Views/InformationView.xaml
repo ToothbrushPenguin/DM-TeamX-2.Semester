@@ -28,8 +28,8 @@
             <ColumnDefinition Width="20" />
         </Grid.ColumnDefinitions>
 
-        <Button
-            x:Name="BackToLogingBtn"
+        <Button Style="{DynamicResource ButtonStyle1}"
+                x:Name="BackToLogingBtn"
             Grid.Row="1"
             Grid.Column="1"
             Width="55"
@@ -64,8 +64,8 @@
             BorderBrush="Black"
             BorderThickness="2"/>
         <!--  User info  -->
-        <Border
-            Grid.Row="5"
+        <Border Style="{DynamicResource ButtonStyle1}"
+                Grid.Row="5"
             Grid.RowSpan="2"
             Grid.Column="1"
             BorderBrush="Black"
@@ -100,8 +100,8 @@
             Margin="10,10,10,10"
             VerticalAlignment="Bottom" />
         <!--  Buttons  -->
-        <Button
-            x:Name="SaveUserBtn"
+        <Button Style="{DynamicResource ButtonStyle1}"
+                x:Name="SaveUserBtn"
             Grid.Row="6"
             Grid.Column="1"
             Width="65"
@@ -109,8 +109,8 @@
             Margin="45,0,0,0"
             HorizontalAlignment="Left"
             Content="Save" />
-        <Button
-            x:Name="DeleteUserBtn"
+        <Button Style="{DynamicResource ButtonStyle1}"
+                x:Name="DeleteUserBtn"
             Grid.Row="6"
             Grid.Column="1"
             Width="65"
@@ -162,7 +162,7 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Bottom" />
         <!--  Filter box  -->
-        <ComboBox
+        <ComboBox Style="{DynamicResource ComboBoxStyle1}"
             x:Name="FilterComboBox"
             Grid.Row="1"
             Grid.Column="2"
@@ -181,7 +181,9 @@
         </ComboBox>
         <!--  Active box  -->
         <ComboBox
-            x:Name="ActiveComboBox"
+            
+                  Style="{DynamicResource ComboBoxStyle1}"
+                  x:Name="ActiveComboBox"
             Grid.Row="1"
             Grid.Column="2"
             Width="100"
@@ -197,8 +199,8 @@
             <ComboBoxItem Content="Active" />
         </ComboBox>
         <!--  Buttons  -->
-        <Button
-            x:Name="UploadModuleBtn"
+        <Button Style="{DynamicResource ButtonStyle1}"
+                x:Name="UploadModuleBtn"
             Grid.Row="7"
             Grid.Column="2"
             Width="100"
@@ -206,8 +208,8 @@
             Margin="10"
             HorizontalAlignment="Left"
             Content="Upload file" />
-        <Button
-            x:Name="OpenModuleBtn"
+        <Button Style="{DynamicResource ButtonStyle1}"
+                x:Name="OpenModuleBtn"
             Grid.Row="7"
             Grid.Column="2"
             Width="100"
