@@ -1,0 +1,84 @@
+﻿<Window x:Class="ModulConfig.Views.NewNoteWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ModulConfig.Views"
+        mc:Ignorable="d"
+        Title="NewNoteWindow" Height="600" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="20" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="150" />
+            <RowDefinition Height="*" />
+            
+            <RowDefinition Height="20" />
+        </Grid.RowDefinitions>
+        
+        <!-- Buttons-->
+        <Button x:Name="BackBtn" 
+                Grid.Row="1"
+                Grid.Column="1"
+                Style="{DynamicResource ButtonStyle1}"
+                Height="25"
+                Width="55"
+                Content="Back"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"/>
+        <Button x:Name="CreateBtn"
+                Grid.Row="2"
+                Grid.Column="3"
+                Style="{DynamicResource ButtonStyle1}"
+                Height="25"
+                Width="90"
+                Content="Create note"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Bottom" />
+        
+        <!--Label-->
+        <Label Content="Create new note" 
+               Grid.Row="1"
+               Grid.Column="2"
+               HorizontalAlignment="Center"
+               FontSize="23"
+               FontWeight="SemiBold"
+               />
+        
+        <!--ComboBox-->
+        <ComboBox Grid.Row="1"
+                  Grid.Column="3"
+                  Style="{DynamicResource ComboBoxStyle1}"
+                  Height="25"
+                  Width="100"
+                  HorizontalAlignment="Right"
+                  VerticalAlignment="Center">
+            <ComboBoxItem Content="Support"></ComboBoxItem>
+            <ComboBoxItem Content="Repair"></ComboBoxItem>
+            <ComboBoxItem Content="General"></ComboBoxItem>
+        </ComboBox>
+        
+        <!--TextBox-->
+        <TextBox Grid.Row="1"
+                 Grid.Column="1"
+                 Grid.ColumnSpan="3"
+                 Height="35"
+                 VerticalContentAlignment="Center"
+                 VerticalAlignment="Bottom"
+                 Style="{DynamicResource NewNoteTxtBox}"
+                 />
+        <TextBox Style="{DynamicResource NewNoteTxtBox}" 
+                 Grid.Row="2"
+                 Grid.RowSpan="2"
+                 Grid.Column="1"
+                 Grid.ColumnSpan="3"
+                 Margin="0,10,0,50"
+                  />
+    </Grid>
+</Window>
