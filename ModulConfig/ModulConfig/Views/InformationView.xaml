@@ -28,23 +28,24 @@
             <ColumnDefinition Width="20" />
         </Grid.ColumnDefinitions>
 
-        <Button Style="{DynamicResource ButtonStyle1}"
-                x:Name="BackToLogingBtn"
+        <Button
+            x:Name="BackToLogingBtn"
             Grid.Row="1"
             Grid.Column="1"
             Width="55"
             Height="35"
             HorizontalAlignment="Left"
             VerticalAlignment="Top"
-            Content="Back" />
+            Content="Back"
+            Style="{DynamicResource ButtonStyle1}" />
         <!--  Information listbox  -->
         <Image
             Grid.Row="1"
             Grid.Column="1"
             Height="22"
+            Margin="0,45,0,0"
             HorizontalAlignment="Left"
-            Source="/Icons/InfoIcon.png"
-            Margin="0,45,0,0"/>
+            Source="/Icons/InfoIcon.png" />
         <Label
             Grid.Row="1"
             Grid.Column="1"
@@ -62,14 +63,15 @@
             Margin="0,10,0,10"
             Background="AliceBlue"
             BorderBrush="Black"
-            BorderThickness="2"/>
+            BorderThickness="2" />
         <!--  User info  -->
-        <Border Style="{DynamicResource ButtonStyle1}"
-                Grid.Row="5"
+        <Border
+            Grid.Row="5"
             Grid.RowSpan="2"
             Grid.Column="1"
             BorderBrush="Black"
-            BorderThickness="2" />
+            BorderThickness="2"
+            Style="{DynamicResource ButtonStyle1}" />
         <!--  Initials  -->
         <Label
             Grid.Row="5"
@@ -100,24 +102,26 @@
             Margin="10,10,10,10"
             VerticalAlignment="Bottom" />
         <!--  Buttons  -->
-        <Button Style="{DynamicResource ButtonStyle1}"
-                x:Name="SaveUserBtn"
+        <Button
+            x:Name="SaveUserBtn"
             Grid.Row="6"
             Grid.Column="1"
             Width="65"
             Height="35"
             Margin="45,0,0,0"
             HorizontalAlignment="Left"
-            Content="Save" />
-        <Button Style="{DynamicResource ButtonStyle1}"
-                x:Name="DeleteUserBtn"
+            Content="Save"
+            Style="{DynamicResource ButtonStyle1}" />
+        <Button
+            x:Name="DeleteUserBtn"
             Grid.Row="6"
             Grid.Column="1"
             Width="65"
             Height="35"
             Margin="0,0,45,0"
             HorizontalAlignment="Right"
-            Content="Delete user" />
+            Content="Delete user"
+            Style="{DynamicResource ButtonStyle1}" />
         <!--  ListView  -->
         <ListView
             x:Name="InformationListView"
@@ -162,7 +166,7 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Bottom" />
         <!--  Filter box  -->
-        <ComboBox Style="{DynamicResource ComboBoxStyle1}"
+        <ComboBox
             x:Name="FilterComboBox"
             Grid.Row="1"
             Grid.Column="2"
@@ -173,17 +177,15 @@
             VerticalAlignment="Bottom"
             HorizontalContentAlignment="Center"
             VerticalContentAlignment="Center"
-            SelectedIndex="0">
+            SelectedIndex="0"
+            Style="{DynamicResource ComboBoxStyle1}">
             <ComboBoxItem Content="Model" />
             <ComboBoxItem Content="Serialnumber" />
-            <ComboBoxItem Content="Company" />
             <ComboBoxItem Content="Status" />
         </ComboBox>
         <!--  Active box  -->
         <ComboBox
-            
-                  Style="{DynamicResource ComboBoxStyle1}"
-                  x:Name="ActiveComboBox"
+            x:Name="ActiveComboBox"
             Grid.Row="1"
             Grid.Column="2"
             Width="100"
@@ -193,29 +195,32 @@
             VerticalAlignment="Bottom"
             HorizontalContentAlignment="Center"
             VerticalContentAlignment="Center"
-            SelectedIndex="0">
+            SelectedIndex="0"
+            Style="{DynamicResource ComboBoxStyle1}">
             <ComboBoxItem Content="All" />
             <ComboBoxItem Content="Not active" />
             <ComboBoxItem Content="Active" />
         </ComboBox>
         <!--  Buttons  -->
-        <Button Style="{DynamicResource ButtonStyle1}"
-                x:Name="UploadModuleBtn"
+        <Button
+            x:Name="UploadModuleBtn"
             Grid.Row="7"
             Grid.Column="2"
             Width="100"
             Height="35"
             Margin="10"
             HorizontalAlignment="Left"
-            Content="Upload file" />
-        <Button Style="{DynamicResource ButtonStyle1}"
-                x:Name="OpenModuleBtn"
+            Content="Upload file"
+            Style="{DynamicResource ButtonStyle1}" />
+        <Button
+            x:Name="OpenModuleBtn"
             Grid.Row="7"
             Grid.Column="2"
             Width="100"
             Height="35"
             Margin="10"
             HorizontalAlignment="Right"
-            Content="Open module" />
+            Content="Open module"
+            Style="{DynamicResource ButtonStyle1}" />
     </Grid>
 </UserControl>
