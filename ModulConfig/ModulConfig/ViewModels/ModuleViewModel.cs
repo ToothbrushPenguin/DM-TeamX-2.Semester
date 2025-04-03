@@ -37,43 +37,24 @@ namespace ModulConfig.ViewModels
         public ModuleViewModel(Module module)
         {
             this.module = module;
-            SerialNumber = module.Serial;
+            SerialNumber = module.SerialNumber;
             Model = module.Model;
             Variant = module.Variant;
             InstallationDay = module.Date;
-            KeyID = module.ID;
-            PublicKey = module.Public_Key;
-            SupportAPIVersion = module.SupportAPI;
+            KeyID = module.KeyID;
+            PublicKey = module.PublicKey;
+            SupportAPIVersion = module.SupportAPIVersion;
         }
 
         public ModuleViewModel()
         {
-            
-        }
 
-        public Module ImportFromJson()
-        {
-            var options = new JsonSerializerOptions
-            {
-                PropertyNameCaseInsensitive = true
-            };
-            Module newModule = null;
-            if (File.Exists(FilePath))
-            {
-                moduleJson = File.ReadAllText(FilePath);
-                if (!string.IsNullOrWhiteSpace(moduleJson))
-                {
-                    newModule = JsonSerializer.Deserialize<Module>(moduleJson,options);
-                }
-            }
-            Debug.WriteLine(newModule.Serial);
-
-            return newModule;
         }
 
         private void SelectFile()
         {
             var initialFileDir = System.IO.Path.GetFullPath("../Documents");
+            Module newModule = null;
             var fileDialog = new OpenFileDialog()
             {
                 InitialDirectory = initialFileDir,
@@ -83,8 +64,13 @@ namespace ModulConfig.ViewModels
             if (fileDialog.ShowDialog() == true)
             {
                 FilePath = fileDialog.FileName;
-                ImportFromJson();
-            } 
+                if (File.Exists(FilePath))
+                {
+                    moduleJson = File.ReadAllText(FilePath);
+                    newModule = new Module(moduleJson);
+                    MessageBox.Show("Topmodul indlæst");
+                }
+            }
         }
     }
 }
