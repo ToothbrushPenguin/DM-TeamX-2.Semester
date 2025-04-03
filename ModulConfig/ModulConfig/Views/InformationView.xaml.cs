@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ModulConfig.Models;
+using ModulConfig.ViewModels;
 
 namespace ModulConfig.Views
 {
@@ -23,6 +25,7 @@ namespace ModulConfig.Views
         public InformationView()
         {
             InitializeComponent();
+            DataContext = new ModuleViewModel();
         }
     }
 }

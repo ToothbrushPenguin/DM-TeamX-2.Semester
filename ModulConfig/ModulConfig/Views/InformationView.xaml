@@ -200,7 +200,8 @@
             Height="35"
             Margin="10"
             HorizontalAlignment="Left"
-            Content="Upload file" />
+            Content="Upload file" 
+            Command="{Binding SelectFileCmd}"/>
         <Button
             x:Name="OpenModuleBtn"
             Grid.Row="7"
