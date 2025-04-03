@@ -6,10 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ModulConfig.Models;
+using System.Windows.Input;
+using System.Windows;
 
 namespace ModulConfig.ViewModels
 {
-    internal class MainViewModel
+    internal class MainViewModel 
     {
         private IRepository<Company> companyRepository;
         private IRepository<User> userRepository;
@@ -24,6 +26,11 @@ namespace ModulConfig.ViewModels
         public ObservableCollection<SBCViewModel> SBCVMs { get; set; }
         public ObservableCollection<IOBoardViewModel> IOBoardVMs { get; set; }
         public ObservableCollection<ModuleViewModel> ModuleVMs { get; set; }
+
+        public ICommand CreateUserCommand { get; set; }
+
+        public string IntialsTextField { get; set; }
+        public string NameTextField { get; set; }
 
         public MainViewModel()
         {
@@ -40,6 +47,17 @@ namespace ModulConfig.ViewModels
             IOBoardVMs = new ObservableCollection<IOBoardViewModel>();
             ModuleVMs = new ObservableCollection<ModuleViewModel>();
 
+            CreateUserCommand = new RelayCommand(e => CreateNewUser());
+
+        }
+        public void CreateNewUser()
+        {
+            User user = new User(IntialsTextField, NameTextField);
+            userRepository.Create(user);
+            UserViewModel user_VM = new UserViewModel(user); 
+            UserVMs.Add(user_VM);
+
+            MessageBox.Show($"User Created {user_VM.Initials} {user_VM.Name}");
         }
     }
 }
