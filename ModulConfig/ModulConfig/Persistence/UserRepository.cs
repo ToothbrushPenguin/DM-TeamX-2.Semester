@@ -20,24 +20,24 @@ namespace ModulConfig.Persistence
             Implement();
             users = new List<User>();
         }
-        
+
 
 
         public void Create(User user)
         {
-            
             using (SqlConnection con = new SqlConnection(ConnectionStrings))
             {
                 con.Open();
-                using (SqlCommand cmd = new SqlCommand($"Execute spCreateUser @Initials, @Name", con))
+                using (SqlCommand cmd = new SqlCommand("spCreateUser", con))
                 {
-                    cmd.Parameters.Add("@Name", SqlDbType.NVarChar, 50).Value = user.Name;
+                    cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add("@Initials", SqlDbType.NVarChar, 10).Value = user.Initials;
-                    
+                    cmd.Parameters.Add("@Name", SqlDbType.NVarChar, 50).Value = user.Name;
+
+                    cmd.ExecuteNonQuery();
                     users.Add(user);
                 }
             }
-            
         }
 
         public void Delete(User user)
@@ -45,7 +45,8 @@ namespace ModulConfig.Persistence
             using (SqlConnection con = new SqlConnection(ConnectionStrings))
             {
                 con.Open();
-                SqlCommand cmd = new SqlCommand("Execute spDeleteUser @Initials", con);
+                SqlCommand cmd = new SqlCommand("spDeleteUser", con);
+                cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@Initials", user.Initials);
                 cmd.ExecuteNonQuery();
             }
@@ -57,30 +58,34 @@ namespace ModulConfig.Persistence
             using (SqlConnection con = new SqlConnection(ConnectionStrings))
             {
                 con.Open();
-                SqlCommand cmd = new SqlCommand("Execute spGetUsers", con);
+                SqlCommand cmd = new SqlCommand("spGetUsers", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
                 {
-                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    while (reader.Read())
                     {
-                        while (reader.Read())
-                        {
-                            User user = new User(reader.GetInt32(0))
-                            {
-                                Name = reader.GetString(1),
-                                Initials = reader.GetString(2)
-                            };
-                            result.Add(user);
-                        }
+                        User user = new User(reader.GetString(1), reader.GetString(0));
+                        result.Add(user);
                     }
                 }
             }
             return result;
         }
 
-      
+
 
         public void Update(User user)
         {
-            throw new NotImplementedException();
+            using (SqlConnection con = new SqlConnection(ConnectionStrings))
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand("spUpdateUser", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@Initials", SqlDbType.NVarChar).Value = user.Initials;
+                cmd.Parameters.Add("@Name", SqlDbType.NVarChar).Value = user.Name;
+                cmd.ExecuteNonQuery();
+            }
         }
     }
 }
