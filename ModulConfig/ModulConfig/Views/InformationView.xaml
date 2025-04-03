@@ -130,23 +130,18 @@
 
                     <GridViewColumn
                         Width="100"
-                        DisplayMemberBinding="{Binding Path=}"
                         Header="Model" />
                     <GridViewColumn
                         Width="150"
-                        DisplayMemberBinding="{Binding Path=}"
                         Header="Serialnumber" />
                     <GridViewColumn
                         Width="100"
-                        DisplayMemberBinding="{Binding Path=}"
                         Header="Company" />
                     <GridViewColumn
                         Width="300"
-                        DisplayMemberBinding="{Binding Path=}"
                         Header="" />
                     <GridViewColumn
                         Width="95"
-                        DisplayMemberBinding="{Binding Path=}"
                         Header="Status" />
                 </GridView>
             </ListView.View>

@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Data.SqlClient;
 using ModulConfig.Models;
 
 namespace ModulConfig.Persistence
@@ -22,7 +23,7 @@ namespace ModulConfig.Persistence
         public User Create(User user)
         {
             
-            using (SqlConnection con = new SqlConnection(ConnectionString))
+            using (SqlConnection con = new SqlConnection(ConnectionStrings))
             {
                 con.Open();
                 using (SqlCommand cmd = new SqlCommand("INSERT INTO [CASE] (Name, Email, System, CaseType, Criticality, Description, SystemId) VALUES(@Name, @Email, @System, @CaseType, @Criticality, @Description, " +
