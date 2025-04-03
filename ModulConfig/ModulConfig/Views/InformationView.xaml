@@ -130,7 +130,7 @@
 
                     <GridViewColumn
                         Width="100"
-                        Header="Model" />
+                        Header="model" />
                     <GridViewColumn
                         Width="150"
                         Header="Serialnumber" />
@@ -169,7 +169,7 @@
             HorizontalContentAlignment="Center"
             VerticalContentAlignment="Center"
             SelectedIndex="0">
-            <ComboBoxItem Content="Model" />
+            <ComboBoxItem Content="model" />
             <ComboBoxItem Content="Serialnumber" />
             <ComboBoxItem Content="Company" />
             <ComboBoxItem Content="Status" />
