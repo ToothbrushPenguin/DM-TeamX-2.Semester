@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Data.SqlClient;
 using ModulConfig.Models;
 
 namespace ModulConfig.Persistence
@@ -16,14 +18,24 @@ namespace ModulConfig.Persistence
             supportNotes = new List<SupportNote>();
         }
 
-        public SupportNote Create(SupportNote obj)
+        public void Create(SupportNote note)
         {
-            throw new NotImplementedException();
+            using (SqlConnection con = new SqlConnection(ConnectionStrings))
+            {
+                throw new NotImplementedException();
+            }
         }
 
-        public void Delete(SupportNote obj)
+        public void Delete(SupportNote note)
         {
-            throw new NotImplementedException();
+            using (SqlConnection con = new SqlConnection(ConnectionStrings))
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand("spDeleteSupportNote", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@NoteID", SqlDbType.Int).Value = note.NoteID;
+                cmd.ExecuteNonQuery();
+            }
         }
 
         public IEnumerable<SupportNote> ReadAll()
@@ -31,7 +43,7 @@ namespace ModulConfig.Persistence
             throw new NotImplementedException();
         }
 
-        public SupportNote Update(SupportNote obj)
+        public void Update(SupportNote note)
         {
             throw new NotImplementedException();
         }
