@@ -55,6 +55,7 @@ namespace ModulConfig.ViewModels
             GetUserCommand = new RelayCommand(e => GetUser());
 
         }
+        //Create new user and returns user to User_Vm list
         public void CreateNewUser()
         {
             User user = new User(IntialsTextField, NameTextField);
@@ -65,6 +66,7 @@ namespace ModulConfig.ViewModels
             MessageBox.Show($"User Created {user_VM.Initials} {user_VM.Name}");
         }
 
+        //Gets User from login initials and opens information window
         public void GetUser()
         {
             SelectedUser_VM = UserVMs.FirstOrDefault(u => u.Initials == IntialsTextField);
