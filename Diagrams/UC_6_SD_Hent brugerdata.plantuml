@@ -5,12 +5,13 @@ title UC 6: Hent brugerdata(“login”)
 
 Participant "GetUserCommand" as GUC
 participant ":MainViewModel" as MVM
-participant "UserRepository" as UR
 
 [o-> GUC++: Execute(parameter)
     GUC -> MVM++: GetUser()
-        MVM ->> UR ++: Read(Initials)
-        return User : User
+        
+        MVM -> MVM ++:  user_VMs.FirstOrDefault(u => u.Initials == LoginFeald)
+        return SelectedUser_VM
+        
         MVM -> MVM : Navigate(ModuleListWindow)
     return
     

@@ -6,15 +6,18 @@ title UC 1: Lav Topmodul ved at importere JSON Konfigurationsfiler
 participant ":CreateModuleCommand" as CMC
 participant ":MainViewModel" as MVM
 participant ":OpenFileDialog" as OFD
+participant ":Module" as M
+participant ":SBC" as S
+participant ":IOBoard" as I
 participant ":ModuleRepository" as MR
+participant ":ModuleViewModel" as MV
 participant ":SBCRepository" as SR
 participant ":SBCViewModel" as SV
 participant ":IOBoardRepository" as IR
 participant ":IOBoardViewModel" as IV
-participant ":Module" as M
-participant ":SBC" as S
-participant ":IOBoard" as I
-participant ":ModuleViewModel" as MV
+
+
+
 
 participant ":MessageBox" as MB
 
@@ -25,39 +28,39 @@ activate CMC
         MVM -> OFD **: Create new OpenFileDialog()
         MVM -> OFD ++: Show()
         return moduleJSON.JSON
-        MVM -> MR ++: Create(company : Company, User : User, moduleJSON : string): Module
-            create M
-            MR -> M ++: new Module(company : Company, User : User, moduleJSON : string)
-                M -> M ++: FormatJSON(moduleJSON : string)
+        create M
+        MVM -> M ++: new Module(company : Company, User : User, moduleJSON : string)
+            M -> M ++: FormatJSON(moduleJSON : string)
                 create S
                 M -> S ++: new SBC(model : string, serialNumber : string)
                 return 
                 create I
                 M -> I ++: new IOBoard(applicationVersion : string, kernelVersion : string, boardModel : string)
                 return 
-                return 
             return 
-        return Module
+        return module
+        MVM -> MR ++: Create(module)
+        return 
        
         create MV
         MVM -> MV ++: new ModuleViewModel(Module)
-        return
+        return module_VM
         MVM -> MVM: ModuleVMs.Add(module_VM)
         MVM -> MVM: SelectedModule_VM = module_VM
 
 
-        MVM -> SR++: Create(SBC : SBC)
-        return SBC
-
+        MVM -> SR++: Create(module.SBC)
+        return 
         create SV
-        MVM -> SV ++: new ModuleViewModel(SBC : SBC)
+        MVM -> SV ++: new SBCViewModel(module.SBC)
         return
         MVM -> MVM: ModuleVMs.Add(module_VM)
 
-        MVM -> IR++: Create(IOBoard : IOBoard)
-        return IOBoard
+
+        MVM -> IR++: Create(module.IOBoard)
+        return 
         create IV
-        MVM -> IV ++: new ModuleViewModel(IOBoard : IOBoard)
+        MVM -> IV ++: new IOBoardViewModel(module.IOBoard)
         return
         MVM -> MVM: ModuleVMs.Add(module_VM)
         
