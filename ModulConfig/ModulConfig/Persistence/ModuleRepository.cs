@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Data.SqlClient;
@@ -12,6 +13,8 @@ namespace ModulConfig.Persistence
     public class ModuleRepository : RepositoryBase, IRepository<Module>
     {
         private List<Module> modules;
+        private string jsonString;
+        private string filePath;
         public ModuleRepository()
         {
             Implement();
