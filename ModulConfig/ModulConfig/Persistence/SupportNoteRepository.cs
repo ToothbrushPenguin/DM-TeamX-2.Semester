@@ -33,7 +33,7 @@ namespace ModulConfig.Persistence
                 con.Open();
                 SqlCommand cmd = new SqlCommand("spDeleteSupportNote", con);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@NoteID", SqlDbType.Int).Value = note.NoteID;
+                cmd.Parameters.Add("@NoteID", SqlDbType.Int).Value = note.Note_ID;
                 cmd.ExecuteNonQuery();
             }
         }

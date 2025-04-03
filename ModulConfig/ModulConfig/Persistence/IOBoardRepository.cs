@@ -16,7 +16,7 @@ namespace ModulConfig.Persistence
             ioBoards = new List<IOBoard>();
         }
 
-        public IOBoard Create(IOBoard obj)
+        public void Create(IOBoard obj)
         {
             throw new NotImplementedException();
         }
@@ -31,7 +31,7 @@ namespace ModulConfig.Persistence
             throw new NotImplementedException();
         }
 
-        public IOBoard Update(IOBoard obj)
+        public void Update(IOBoard obj)
         {
             throw new NotImplementedException();
         }

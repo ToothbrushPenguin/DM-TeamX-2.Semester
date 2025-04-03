@@ -26,7 +26,7 @@ namespace ModulConfig.Persistence
                 using (SqlCommand cmd = new SqlCommand("spCreateSBC", con))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add("@SBCSerialNumber", SqlDbType.NVarChar, 50).Value = sbc.SBCSerialNumber;
+                    cmd.Parameters.Add("@SBCSerialNumber", SqlDbType.NVarChar, 50).Value = sbc.SerialNumber;
                     cmd.Parameters.Add("@Model", SqlDbType.NVarChar, 50).Value = sbc.Model;
 
                     cmd.ExecuteNonQuery();
@@ -42,7 +42,7 @@ namespace ModulConfig.Persistence
                 con.Open();
                 SqlCommand cmd = new SqlCommand("spDeleteSBC", con);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@SBCSerialNumber", SqlDbType.NVarChar, 50).Value = sbc.SBCSerialNumber;
+                cmd.Parameters.Add("@SBCSerialNumber", SqlDbType.NVarChar, 50).Value = sbc.SerialNumber;
                 cmd.ExecuteNonQuery();
             }
         }
@@ -78,7 +78,7 @@ namespace ModulConfig.Persistence
                 con.Open();
                 SqlCommand cmd = new SqlCommand("spUpdateSBC", con);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@SBCSerialNumber", SqlDbType.NVarChar, 50).Value = sbc.SBCSerialNumber;
+                cmd.Parameters.Add("@SBCSerialNumber", SqlDbType.NVarChar, 50).Value = sbc.SerialNumber;
                 cmd.Parameters.Add("@Model", SqlDbType.NVarChar, 50).Value = sbc.Model;
                 cmd.ExecuteNonQuery();
             }

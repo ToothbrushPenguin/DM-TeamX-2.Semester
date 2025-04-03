@@ -12,10 +12,11 @@ namespace ModulConfig.Models
         public string SerialNumber { get; set; }
         public string Model { get; set; }
         public string Variant { get; set; }
-        public DateOnly Date { get; set; }
+        public DateOnly InstallationDay { get; set; }
         public string KeyID { get; set; }
         public string PublicKey { get; set; }
         public string SupportAPIVersion { get; set; }
+       
         public Module(string moduleJson)
         {
             using (JsonDocument doc = JsonDocument.Parse(moduleJson))
@@ -28,7 +29,7 @@ namespace ModulConfig.Models
 
                 // Konverter DateTime til DateOnly
                 DateTime parsedDate = root.GetProperty("date").GetDateTime();
-                Date = DateOnly.FromDateTime(parsedDate);
+                InstallationDay = DateOnly.FromDateTime(parsedDate);
 
                 // key -> id og public_key
                 if (root.TryGetProperty("key", out JsonElement keyElement))
@@ -43,6 +44,16 @@ namespace ModulConfig.Models
                     SupportAPIVersion = supportElement.GetProperty("version").GetString();
                 }
             }
+        }
+        public Module(string serialNumber, string model, string variant, DateOnly installationDay, string keyID, string publicKey, string supportAPIVersion)
+        {
+            SerialNumber = serialNumber;
+            Model = model;
+            Variant = variant;
+            InstallationDay = installationDay;
+            KeyID = keyID;
+            PublicKey = publicKey;
+            SupportAPIVersion = supportAPIVersion;
         }
     }
 }

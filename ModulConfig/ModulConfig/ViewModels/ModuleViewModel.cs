@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using Microsoft.Win32;
 using ModulConfig.Models;
+using ModulConfig.Persistence;
 
 namespace ModulConfig.ViewModels
 {
@@ -32,7 +33,7 @@ namespace ModulConfig.ViewModels
             set { _filePath = value; }
         }
 
-        public RelayCommand SelectFileCmd => new RelayCommand(execute => SelectFile(), canExecute => true);
+        public RelayCommand SelectFileCmd => new RelayCommand(e => SelectFile());
 
         public ModuleViewModel(Module module)
         {
@@ -40,7 +41,7 @@ namespace ModulConfig.ViewModels
             SerialNumber = module.SerialNumber;
             Model = module.Model;
             Variant = module.Variant;
-            InstallationDay = module.Date;
+            InstallationDay = module.InstallationDay;
             KeyID = module.KeyID;
             PublicKey = module.PublicKey;
             SupportAPIVersion = module.SupportAPIVersion;
@@ -52,7 +53,7 @@ namespace ModulConfig.ViewModels
 
         }
 
-        private void SelectFile()
+        public void SelectFile()
         {
             var initialFileDir = System.IO.Path.GetFullPath("../Documents");
             Module newModule = null;
@@ -70,8 +71,12 @@ namespace ModulConfig.ViewModels
                     moduleJson = File.ReadAllText(FilePath);
                     newModule = new Module(moduleJson);
                     MessageBox.Show("Topmodul indlæst");
+
                 }
             }
+
+            ModuleRepository moduleRepo = new ModuleRepository();
+            moduleRepo.Create(newModule);
         }
     }
 }
