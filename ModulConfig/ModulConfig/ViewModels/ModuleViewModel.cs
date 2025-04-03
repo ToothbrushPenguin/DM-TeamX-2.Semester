@@ -46,6 +46,7 @@ namespace ModulConfig.ViewModels
             SupportAPIVersion = module.SupportAPIVersion;
         }
 
+        // Only used for testing - used in datacontext in informationView.xaml.cs
         public ModuleViewModel()
         {
 
