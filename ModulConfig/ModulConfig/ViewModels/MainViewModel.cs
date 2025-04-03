@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using ModulConfig.Models;
 using System.Windows.Input;
 using System.Windows;
+using System.Windows.Navigation;
+using ModulConfig.Views;
 
 namespace ModulConfig.ViewModels
 {
@@ -28,10 +30,12 @@ namespace ModulConfig.ViewModels
         public ObservableCollection<ModuleViewModel> ModuleVMs { get; set; }
 
         public ICommand CreateUserCommand { get; set; }
+        public ICommand GetUserCommand { get; set; }    
 
         public string IntialsTextField { get; set; }
         public string NameTextField { get; set; }
 
+        UserViewModel SelectedUser_VM;
         public MainViewModel()
         {
             companyRepository = new CompanyRepository();
@@ -48,6 +52,7 @@ namespace ModulConfig.ViewModels
             ModuleVMs = new ObservableCollection<ModuleViewModel>();
 
             CreateUserCommand = new RelayCommand(e => CreateNewUser());
+            GetUserCommand = new RelayCommand(e => GetUser());
 
         }
         public void CreateNewUser()
@@ -58,6 +63,12 @@ namespace ModulConfig.ViewModels
             UserVMs.Add(user_VM);
 
             MessageBox.Show($"User Created {user_VM.Initials} {user_VM.Name}");
+        }
+
+        public void GetUser()
+        {
+            SelectedUser_VM = UserVMs.FirstOrDefault(u => u.Initials == IntialsTextField);
+            MainWindow.NavigationFrame.Navigate(new InformationView());
         }
     }
 }

@@ -9,9 +9,9 @@ namespace ModulConfig.Persistence
 {
     public interface IRepository<T>
     {
-        T Create(T obj);
+        void Create(T obj);
         IEnumerable<T> ReadAll();
-        T Update(T obj);
+        void Update(T obj);
         void Delete(T obj);
     }
 }

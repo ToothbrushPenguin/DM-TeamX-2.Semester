@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using ModulConfig.ViewModels;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -16,8 +17,13 @@ namespace ModulConfig;
 /// </summary>
 public partial class MainWindow : Window
 {
+    MainViewModel mvm = new MainViewModel();
+    public static Frame NavigationFrame { get; private set; }
+
     public MainWindow()
     {
+        NavigationFrame = MainFrame;
         InitializeComponent();
+        DataContext = mvm;
     }
 }

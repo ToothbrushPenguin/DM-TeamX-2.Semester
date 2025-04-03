@@ -4,7 +4,11 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
+using Microsoft.Data.SqlClient;
 using ModulConfig.Models;
+using Microsoft.Extensions.Configuration;
+
 
 namespace ModulConfig.Persistence
 {
@@ -19,38 +23,62 @@ namespace ModulConfig.Persistence
         
 
 
-        public User Create(User user)
+        public void Create(User user)
         {
             
-            using (SqlConnection con = new SqlConnection(ConnectionString))
+            using (SqlConnection con = new SqlConnection(ConnectionStrings))
             {
                 con.Open();
-                using (SqlCommand cmd = new SqlCommand("INSERT INTO [CASE] (Name, Email, System, CaseType, Criticality, Description, SystemId) VALUES(@Name, @Email, @System, @CaseType, @Criticality, @Description, " +
-                                                       "(SELECT SystemId FROM [SYSTEM] WHERE NAME = @System)) SELECT @@IDENTITY", con))
+                using (SqlCommand cmd = new SqlCommand($"Execute spCreateUser @Initials, @Name", con))
                 {
                     cmd.Parameters.Add("@Name", SqlDbType.NVarChar, 50).Value = user.Name;
-                    cmd.Parameters.Add("@Initials", SqlDbType.NVarChar, 50).Value = user.Initials;
+                    cmd.Parameters.Add("@Initials", SqlDbType.NVarChar, 10).Value = user.Initials;
                     
                     users.Add(user);
                 }
             }
-
-            return user;
+            
         }
 
         public void Delete(User user)
         {
-            throw new NotImplementedException();
+            using (SqlConnection con = new SqlConnection(ConnectionStrings))
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand("Execute spDeleteUser @Initials", con);
+                cmd.Parameters.AddWithValue("@Initials", user.Initials);
+                cmd.ExecuteNonQuery();
+            }
         }
 
         public IEnumerable<User> ReadAll()
         {
-            throw new NotImplementedException();
+            List<User> result = new List<User>();
+            using (SqlConnection con = new SqlConnection(ConnectionStrings))
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand("Execute spGetUsers", con);
+                {
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            User user = new User(reader.GetInt32(0))
+                            {
+                                Name = reader.GetString(1),
+                                Initials = reader.GetString(2)
+                            };
+                            result.Add(user);
+                        }
+                    }
+                }
+            }
+            return result;
         }
 
       
 
-        public User Update(User user)
+        public void Update(User user)
         {
             throw new NotImplementedException();
         }
