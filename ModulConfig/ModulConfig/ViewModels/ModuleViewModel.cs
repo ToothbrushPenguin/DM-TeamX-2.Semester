@@ -58,10 +58,11 @@ namespace ModulConfig.ViewModels
 
         private void SelectFile()
         {
+            var initialFileDir = System.IO.Path.GetFullPath("../Documents");
             var fileDialog = new OpenFileDialog()
             {
-                InitialDirectory = "../Documents",
-                Filter = "Image files (*.bmp, *.jpg)|*.bmp;*.jpg|All files (*.*)|*.*",
+                InitialDirectory = initialFileDir,
+                Filter = "Json files (*.json)|*.json|All files (*.*)|*.*",
                 RestoreDirectory = true
             };
             if (fileDialog.ShowDialog() == true)
