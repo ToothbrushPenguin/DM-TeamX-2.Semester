@@ -29,7 +29,7 @@ activate CMC
         MVM -> OFD ++: Show()
         return moduleJSON.JSON
         create M
-        MVM -> M ++: new Module(company : Company, User : User, moduleJSON : string)
+        MVM -> M ++: new Module(User : User, moduleJSON : string)
             M -> M ++: FormatJSON(moduleJSON : string)
                 create S
                 M -> S ++: new SBC(model : string, serialNumber : string)
