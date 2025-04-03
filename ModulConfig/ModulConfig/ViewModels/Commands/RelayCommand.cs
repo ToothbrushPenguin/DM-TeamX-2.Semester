@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace ModulConfig
+namespace ModulConfig.ViewModels.Commands
 {
     public class RelayCommand : ICommand
     {
