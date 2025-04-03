@@ -116,7 +116,7 @@
             x:Name="DeleteUserBtn"
             Grid.Row="6"
             Grid.Column="1"
-            Width="65"
+            Width="75"
             Height="35"
             Margin="0,0,45,0"
             HorizontalAlignment="Right"

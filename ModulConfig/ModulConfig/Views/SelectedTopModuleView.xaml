@@ -204,6 +204,23 @@
             Margin="0,70,0,0"
             Content="Board:"
             FontWeight="SemiBold" />
+        <Label Grid.Row="4"
+               Grid.Column="1"
+               Content="Security Key" 
+               Margin="10,10,0,0"
+               FontWeight="SemiBold"
+               FontSize="14"
+                />
+        <Label Content="ID: " 
+               Grid.Row="4"
+               Grid.Column="1"
+               FontWeight="SemiBold"
+               Margin="10,50,0,0"/>
+        <Label Content="Public Key: " 
+               Grid.Row="4"
+               Grid.Column="1"
+               FontWeight="SemiBold"
+               Margin="10,120,0,0"/>
         <!--  Images  -->
         <Image
             Grid.Row="1"
@@ -298,6 +315,24 @@
             Margin="130,72,0,0"
             VerticalContentAlignment="Center"
             Text="[Skal bindes]" />
+        <TextBox x:Name="IdTxtBox"
+                 Grid.Row="4"
+                 Grid.Column="1"
+                 Grid.ColumnSpan="2"
+                 Margin="0,0,100,122"
+                 Height="25"
+                 Width="300"
+                 Text="[Skal Bindes]"
+                 VerticalContentAlignment="Center"
+                 />
+        <TextBox x:Name="PublicKeyTxtBox" 
+                 Grid.Row="4"
+                 Grid.ColumnSpan="2"
+                 Grid.Column="1"
+                 Height="65"
+                 Width="400"
+                 Margin="100,20,100,0"
+                 Text="[Skal Bindes]"/>
         <!--  Borders  -->
         <Border
             x:Name="BasicInfoBorder"
