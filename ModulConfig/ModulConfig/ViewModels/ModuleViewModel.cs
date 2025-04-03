@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows;
 using Microsoft.Win32;
@@ -34,13 +37,13 @@ namespace ModulConfig.ViewModels
         public ModuleViewModel(Module module)
         {
             this.module = module;
-            SerialNumber = module.SerialNumber;
+            SerialNumber = module.Serial;
             Model = module.Model;
             Variant = module.Variant;
-            InstallationDay = module.InstallationDay;
-            KeyID = module.KeyID;
-            PublicKey = module.PublicKey;
-            SupportAPIVersion = module.SupportAPIVersion;
+            InstallationDay = module.Date;
+            KeyID = module.ID;
+            PublicKey = module.Public_Key;
+            SupportAPIVersion = module.SupportAPI;
         }
 
         public ModuleViewModel()
@@ -50,8 +53,20 @@ namespace ModulConfig.ViewModels
 
         public Module ImportFromJson()
         {
+            var options = new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            };
             Module newModule = null;
-            
+            if (File.Exists(FilePath))
+            {
+                moduleJson = File.ReadAllText(FilePath);
+                if (!string.IsNullOrWhiteSpace(moduleJson))
+                {
+                    newModule = JsonSerializer.Deserialize<Module>(moduleJson,options);
+                }
+            }
+            Debug.WriteLine(newModule.Serial);
 
             return newModule;
         }
@@ -68,6 +83,7 @@ namespace ModulConfig.ViewModels
             if (fileDialog.ShowDialog() == true)
             {
                 FilePath = fileDialog.FileName;
+                ImportFromJson();
             } 
         }
     }

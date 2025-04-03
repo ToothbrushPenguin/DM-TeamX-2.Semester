@@ -8,23 +8,17 @@ namespace ModulConfig.Models
 {
     public class Module
     {
-        public string SerialNumber { get; set; }
+        public string Serial { get; set; }
         public string Model { get; set; }
         public string Variant { get; set; }
-        public DateOnly InstallationDay { get; set; }
-        public string KeyID { get; set; }
-        public string PublicKey { get; set; }
-        public string SupportAPIVersion { get; set; }
+        public DateOnly Date { get; set; }
+        public string ID { get; set; }
+        public string Public_Key { get; set; }
+        public string SupportAPI { get; set; }
 
-        public Module(string serialNumber, string model, string variant, DateOnly installationDay, string keyID, string publicKey, string supportAPIVersion)
+        public Module(string moduleJson)
         {
-            SerialNumber = serialNumber;
-            Model = model;
-            Variant = variant;
-            InstallationDay = installationDay;
-            KeyID = keyID;
-            PublicKey = publicKey;
-            SupportAPIVersion = supportAPIVersion;
+            
         }
     }
 }
