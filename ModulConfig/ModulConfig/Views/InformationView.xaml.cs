@@ -25,7 +25,7 @@ namespace ModulConfig.Views
         public InformationView()
         {
             InitializeComponent();
-            DataContext = new ModuleViewModel();
+            DataContext = new MainViewModel();
         }
     }
 }

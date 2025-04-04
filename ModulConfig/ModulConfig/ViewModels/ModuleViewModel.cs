@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -13,28 +15,139 @@ using ModulConfig.Persistence;
 
 namespace ModulConfig.ViewModels
 {
-    internal class ModuleViewModel
+    public class ModuleViewModel
     {
+        #region Fields And Properties
         private Module module;
         private string moduleJson;
         private string _filePath;
+        private IRepository<Module> moduleRepository;
 
-        public string SerialNumber { get; set; }
-        public string Model { get; set; }
-        public string Variant { get; set; }
-        public DateOnly InstallationDay { get; set; }
-        public string KeyID { get; set; }
-        public string PublicKey { get; set; }
-        public string SupportAPIVersion { get; set; }
+        private string serialNumber;
+        private string model;
+        private string variant;
+        private DateOnly installationDay;
+        private string keyID;
+        private string publicKey;
+        private string supportAPIVersion;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public string SerialNumber
+        {
+            get => serialNumber;
+            set
+            {
+                if (serialNumber != value)
+                {
+                    serialNumber = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        public string Model
+        {
+            get => model;
+            set
+            {
+                if (model != value)
+                {
+                    model = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        public string Variant
+        {
+            get => variant;
+            set
+            {
+                if (variant != value)
+                {
+                    variant = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        public DateOnly InstallationDay
+        {
+            get => installationDay;
+            set
+            {
+                if (installationDay != value)
+                {
+                    installationDay = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        public string KeyID
+        {
+            get => keyID;
+            set
+            {
+                if (keyID != value)
+                {
+                    keyID = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        public string PublicKey
+        {
+            get => publicKey;
+            set
+            {
+                if (publicKey != value)
+                {
+                    publicKey = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        public string SupportAPIVersion
+        {
+            get => supportAPIVersion;
+            set
+            {
+                if (supportAPIVersion != value)
+                {
+                    supportAPIVersion = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
 
         public string FilePath
         {
-            get { return _filePath; }
-            set { _filePath = value; }
-        }
-
+            get => _filePath;
+            set
+            {
+                if (_filePath != value)
+                {
+                    _filePath = value;
+                    OnPropertyChanged();
+                }
+            }
+        } 
+        #endregion
         public RelayCommand SelectFileCmd => new RelayCommand(e => SelectFile());
 
+        public ModuleViewModel(IRepository<Module> moduleRepository)
+        {
+         this.moduleRepository = moduleRepository;
+        }
         public ModuleViewModel(Module module)
         {
             this.module = module;
@@ -45,12 +158,6 @@ namespace ModulConfig.ViewModels
             KeyID = module.KeyID;
             PublicKey = module.PublicKey;
             SupportAPIVersion = module.SupportAPIVersion;
-        }
-
-        // Only used for testing - used in datacontext in informationView.xaml.cs
-        public ModuleViewModel()
-        {
-
         }
 
         public void SelectFile()

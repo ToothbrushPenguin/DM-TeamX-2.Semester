@@ -7,7 +7,7 @@ using ModulConfig.Models;
 
 namespace ModulConfig.ViewModels
 {
-    internal class SBCViewModel
+    public class SBCViewModel
     {
         private SBC sbc;
 

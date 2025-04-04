@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ModulConfig.ViewModels
 {
-    internal class SupportNoteViewModel
+    public class SupportNoteViewModel
     {
         private SupportNote supportNote;
 

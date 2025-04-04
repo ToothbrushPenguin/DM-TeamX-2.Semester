@@ -121,6 +121,7 @@
         <!--  ListView  -->
         <ListView
             x:Name="InformationListView"
+            ItemsSource="{Binding ModuleVMs}"
             Grid.Row="2"
             Grid.RowSpan="5"
             Grid.Column="2"
@@ -130,13 +131,12 @@
 
                     <GridViewColumn
                         Width="100"
-                        Header="Model" />
+                        Header="Model" 
+                        DisplayMemberBinding="{Binding Model}"/>
                     <GridViewColumn
                         Width="150"
-                        Header="Serialnumber" />
-                    <GridViewColumn
-                        Width="100"
-                        Header="Company" />
+                        Header="Serialnumber" 
+                        DisplayMemberBinding="{Binding SerialNumber}"/>
                     <GridViewColumn
                         Width="300"
                         Header="" />
@@ -201,7 +201,7 @@
             Margin="10"
             HorizontalAlignment="Left"
             Content="Upload file" 
-            Command="{Binding SelectFileCmd}"/>
+            Command="{Binding Selected_ModuleVM.SelectFileCmd}"/>
         <Button
             x:Name="OpenModuleBtn"
             Grid.Row="7"

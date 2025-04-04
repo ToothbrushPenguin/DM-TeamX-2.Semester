@@ -7,7 +7,7 @@ using ModulConfig.Models;
 
 namespace ModulConfig.ViewModels
 {
-    internal class IOBoardViewModel
+    public class IOBoardViewModel
     {
         private IOBoard ioBoard;
         public string ApplicationVersion { get; set; }

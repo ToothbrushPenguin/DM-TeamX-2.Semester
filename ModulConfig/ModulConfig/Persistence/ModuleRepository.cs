@@ -18,7 +18,6 @@ namespace ModulConfig.Persistence
         public ModuleRepository()
         {
             Implement();
-            modules = new List<Module>();
 
         }
 

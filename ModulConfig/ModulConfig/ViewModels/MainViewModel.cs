@@ -13,7 +13,7 @@ using ModulConfig.Views;
 
 namespace ModulConfig.ViewModels
 {
-    internal class MainViewModel 
+    public class MainViewModel
     {
         private IRepository<User> userRepository;
         private IRepository<SupportNote> supportNoteRepository;
@@ -26,7 +26,7 @@ namespace ModulConfig.ViewModels
         public ObservableCollection<SBCViewModel> SBCVMs { get; set; }
         public ObservableCollection<IOBoardViewModel> IOBoardVMs { get; set; }
         public ObservableCollection<ModuleViewModel> ModuleVMs { get; set; }
-
+        public ModuleViewModel Selected_ModuleVM { get; set; }
         public ICommand CreateUserCommand { get; set; }
         public ICommand GetUserCommand { get; set; }
 
@@ -47,7 +47,8 @@ namespace ModulConfig.ViewModels
             SBCVMs = new ObservableCollection<SBCViewModel>();
             IOBoardVMs = new ObservableCollection<IOBoardViewModel>();
             ModuleVMs = new ObservableCollection<ModuleViewModel>();
-
+            Selected_ModuleVM = new ModuleViewModel(moduleRepository);
+            LoadModules();
             CreateUserCommand = new RelayCommand(e =>
             {
                 UserViewModel user_VM = new UserViewModel(userRepository);
@@ -55,11 +56,12 @@ namespace ModulConfig.ViewModels
                 MessageBox.Show($"User Created {user_VM.Initials} {user_VM.Name}");
             });
 
+
             GetUserCommand = new RelayCommand(e =>
             {
                 if (SelectedUser_VM != null)
                 {
-                    SelectedUser_VM.GetUser(); 
+                    SelectedUser_VM.GetUser();
                 }
                 else
                 {
@@ -67,7 +69,17 @@ namespace ModulConfig.ViewModels
                 }
             });
         }
-        
+        private void LoadModules()
+        {
+            ModuleVMs.Clear();
+            IEnumerable<Module> modules = moduleRepository.ReadAll();
+            foreach (Module module in modules)
+            {
+                ModuleVMs.Add(new ModuleViewModel(module));
+            }
+        }
+
+
 
         //Gets User from login initials and opens information window
         //public void GetUser()
