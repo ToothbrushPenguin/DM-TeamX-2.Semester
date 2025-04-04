@@ -55,16 +55,25 @@ namespace ModulConfig.ViewModels
                 MessageBox.Show($"User Created {user_VM.Initials} {user_VM.Name}");
             });
 
-            GetUserCommand = new RelayCommand(e => GetUser());
-            
+            GetUserCommand = new RelayCommand(e =>
+            {
+                if (SelectedUser_VM != null)
+                {
+                    SelectedUser_VM.GetUser(); 
+                }
+                else
+                {
+                    MessageBox.Show("Please enter your initials");
+                }
+            });
         }
         
 
         //Gets User from login initials and opens information window
-        public void GetUser()
-        {
-            SelectedUser_VM = UserVMs.FirstOrDefault(u => u.Initials == IntialsTextField);
-            MainWindow.NavigationFrame.Navigate(new InformationView());
-        }
+        //public void GetUser()
+        //{
+        //    SelectedUser_VM = UserVMs.FirstOrDefault(u => u.Initials == IntialsTextField);
+        //    MainWindow.NavigationFrame.Navigate(new InformationView());
+        //}
     }
 }

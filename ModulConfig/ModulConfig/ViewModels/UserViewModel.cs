@@ -1,5 +1,6 @@
 ﻿using ModulConfig.Models;
 using ModulConfig.Persistence;
+using ModulConfig.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,21 @@ namespace ModulConfig.ViewModels
 
             user = new User(Name, Initials);
             userRepo.Create(user);
+        }
+
+        public void GetUser()
+        {
+            var user = userRepo.ReadAll().FirstOrDefault(u => u.Initials == Initials);
+            if (user != null)
+            {
+                Name = user.Name;
+                Initials = user.Initials;
+                MainWindow.NavigationFrame.Navigate(new InformationView());
+            }
+            else
+            {
+                throw new Exception("User not found");
+            }
         }
     }
 }
