@@ -5,30 +5,31 @@ title UC5: Opret ny bruger med initialer og navn
 
 
 participant ": CreateUserCommand" as CUC
-participant ": mainViewModel" as mvm
+participant ": userViewModel" as uvm
 participant ": User" as U
 participant ": userRepository" as urepo
+participant ": mainViewModel" as mvm
 
-participant ": userViewModel" as uvm
+
+
+
 
 participant ":MessageBox" as MB
 
-[o-> CUC: Execute(parameter)
-    CUC -> mvm ++: CreateNewUser()
+[o-> CUC++: Execute(parameter)
+    create uvm
+    CUC -> uvm ++: new UserViewModel(userRepository)
         create U
-        mvm --> U ++: new User(initials, name)
+        uvm --> U ++: new User(initials, name)
         return user
-        mvm -> urepo ++: Create(user)
-        urepo -> urepo : users.Add(user)    
-        return 
+        uvm -> urepo ++: Create(user)
         
-        create uvm
-        mvm -> uvm ++: new UserViewModel(user)
-        return user_VM
-        mvm -> mvm: UserVMs.Add(user_VM)
-                
-        mvm -> MB ++: Show()
-        return
+        return 
+    return user_VM
+    CUC -> mvm ++: UserVMs.Add(user_VM));             
+        
+    return
+    CUC -> MB ++: Show()
     return
 
 @enduml

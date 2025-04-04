@@ -1,4 +1,5 @@
 ﻿using ModulConfig.Models;
+using ModulConfig.Persistence;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,19 +8,21 @@ using System.Threading.Tasks;
 
 namespace ModulConfig.ViewModels
 {
-    internal class UserViewModel
+    public class UserViewModel
     {
         private User user;
+
+        private IRepository<User> userRepo;
 
         public string Name { get; set; }
         public string Initials { get; set; }
 
-        public UserViewModel(User user)
+        public UserViewModel(IRepository<User> userRepository)
         {
-            this.user = user;
+            userRepo = userRepository;
 
-            Name = user.Name;
-            Initials = user.Initials;
+            user = new User(Name, Initials);
+            userRepo.Create(user);
         }
     }
 }

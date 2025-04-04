@@ -48,19 +48,17 @@ namespace ModulConfig.ViewModels
             IOBoardVMs = new ObservableCollection<IOBoardViewModel>();
             ModuleVMs = new ObservableCollection<ModuleViewModel>();
 
-            CreateUserCommand = new RelayCommand(e => CreateNewUser());
+            CreateUserCommand = new RelayCommand(e =>
+            {
+                UserViewModel user_VM = new UserViewModel(userRepository);
+                UserVMs.Add(user_VM);
+                MessageBox.Show($"User Created {user_VM.Initials} {user_VM.Name}");
+            });
+
             GetUserCommand = new RelayCommand(e => GetUser());
             
         }
-        public void CreateNewUser()
-        {
-            User user = new User(IntialsTextField, NameTextField);
-            userRepository.Create(user);
-            UserViewModel user_VM = new UserViewModel(user); 
-            UserVMs.Add(user_VM);
-
-            MessageBox.Show($"User Created {user_VM.Initials} {user_VM.Name}");
-        }
+        
 
         public void GetUser()
         {
