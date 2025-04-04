@@ -55,7 +55,7 @@ namespace ModulConfig.ViewModels
             GetUserCommand = new RelayCommand(e => GetUser());
 
         }
-        //Create new user and returns user to User_Vm list
+        //Create new user and adds user to User_Vm list
         public void CreateNewUser()
         {
             User user = new User(IntialsTextField, NameTextField);
