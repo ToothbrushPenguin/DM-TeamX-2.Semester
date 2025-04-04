@@ -60,6 +60,7 @@ namespace ModulConfig.ViewModels
         }
         
 
+        //Gets User from login initials and opens information window
         public void GetUser()
         {
             SelectedUser_VM = UserVMs.FirstOrDefault(u => u.Initials == IntialsTextField);
